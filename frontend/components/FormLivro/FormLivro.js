@@ -6,7 +6,7 @@ import Botao from "@/components/Botao/Botao";
 import Mensagem from "@/components/Mensagem/Mensagem";
 import styles from "./FormLivro.module.css";
 
-const VAZIO = { titulo: "", autor: "", ano: "",disponivel: "", genero_id: "", genero: "" };
+const VAZIO = { titulo: "", autor: "", ano: "",isbn:"",disponivel: "", genero_id: "", genero: "" };
 
 export default function FormLivro({ generos, LivroInicial = VAZIO, aoSalvar }) {
   const [dados, setDados] = useState(LivroInicial);
@@ -26,6 +26,7 @@ export default function FormLivro({ generos, LivroInicial = VAZIO, aoSalvar }) {
     if (dados.autor.trim() === "") novos.autor = "Informe o autor.";
     if (Number(dados.ano) <= 0 || (dados.ano)< 1500) novos.ano = "Informe o ano";
     if (dados.genero_id === "") novos.genero_id = "Escolha uma Genero.";
+    if (dados.isbn==="") novos.isbn="Digite o isbn(10 digitos)"
     return novos;
   };
 
