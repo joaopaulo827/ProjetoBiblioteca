@@ -1,0 +1,38 @@
+.detalhe {
+    max-width: 720px;
+    padding: 1.5rem;
+    background: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+  }
+  
+  .detalhe h1 {
+    margin: 0.25rem 0;
+  }
+  
+  .categoria {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--cor-principal-escura);
+    text-transform: uppercase;
+  }
+  
+  .info {
+    color: var(--cor-texto-suave);
+  }
+  
+  .acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .editar {
+    padding: 0.6rem 1rem;
+    border-radius: var(--raio);
+    background: var(--cor-principal);
+    color: var(--cor-superficie);
+    font-weight: bold;
+    text-decoration: none;
+  }

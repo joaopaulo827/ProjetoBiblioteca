@@ -23,7 +23,7 @@ export default function Cabecalho() {
   return (
     <header className={styles.cabecalho}>
       <Link href="/" className={styles.marca}>
-        Biblioteca
+        Biblioteca Digital
       </Link>
       <nav className={styles.menu}>
         {LINKS.map((link) => (

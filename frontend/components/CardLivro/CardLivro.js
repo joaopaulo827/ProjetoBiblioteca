@@ -9,7 +9,7 @@ export default function CardLivro({ livros }) {
         <h2 className={styles.autor}>{livros.autor}</h2>
       </Link>
       <p className={styles.info}>
-          {livros.disponivel}
+          {livros.genero}
         </p>              
     </li>
   );
