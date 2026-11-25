@@ -24,7 +24,9 @@ export default function FormLivro({ generos, LivroInicial = VAZIO, aoSalvar }) {
     if (dados.titulo.trim().length < 3)
       novos.titulo = "O título precisa de pelo menos 3 letras.";
     if (dados.autor.trim() === "") novos.autor = "Informe o autor.";
-    if (Number(dados.ano) <= 0 || (dados.ano)< 1500) novos.ano = "Informe o ano";
+    if (!dados.ano || Number(dados.ano) < 1500) {
+      novos.ano = "Informe um ano válido.";
+    }
     if (dados.genero_id === "") novos.genero_id = "Escolha uma Genero.";
     if (dados.isbn==="") novos.isbn="Digite o isbn(10 digitos)"
     return novos;
@@ -77,7 +79,7 @@ export default function FormLivro({ generos, LivroInicial = VAZIO, aoSalvar }) {
         />
       </div>
       <Campo
-        rotulo="genero"
+        rotulo="Genero"
         id="genero_id"
         name="genero_id"
         value={dados.genero_id}
@@ -87,19 +89,20 @@ export default function FormLivro({ generos, LivroInicial = VAZIO, aoSalvar }) {
         <option value="">Escolha...</option>
         {generos.map((generos) => (
           <option key={generos.id} value={generos.id}>
-            {generos.nome}
+            {generos.genero}
           </option>
         ))}
       </Campo>
       <Campo
-        rotulo="Disponivel"
+        rotulo="Disponível"
         id="disponivel"
         name="disponivel"
-        multilinha
         value={dados.disponivel}
         onChange={mudar}
-        erro={erros.disponivel}
-      />
+      >
+        <option value="true">Sim</option>
+        <option value="false">Não</option>
+      </Campo>
       <Botao type="submit" disabled={salvando}>
         {salvando ? "Salvando..." : "Salvar"}
       </Botao>
