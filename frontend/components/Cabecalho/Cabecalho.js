@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useSessao, sair } from "@/lib/sessao";
 import styles from "./Cabecalho.module.css";
 
 const LINKS = [
