@@ -5,9 +5,12 @@ export default function CardLivro({ livros }) {
   return (
     <li>
       <Link href={`/livros/${livros.id}`} className={styles.card}>
-        <span className={styles.categoria}>{livros.categoria}</span>
-        <h2 className={styles.titulo}>{livros.titulo}</h2>
-      </Link>        
+        <span className={styles.titulo}>{livros.titulo}</span>
+        <h2 className={styles.autor}>{livros.autor}</h2>
+      </Link>
+      <p className={styles.info}>
+          {livros.disponivel}
+        </p>              
     </li>
   );
 }
