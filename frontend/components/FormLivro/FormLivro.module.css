@@ -1,0 +1,15 @@
+.formulario {
+    max-width: 560px;
+    padding: 1.5rem;
+    background: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+  }
+  
+  .linha {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--espaco);
+  }
+
+  
