@@ -1,0 +1,29 @@
+.fundo {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: var(--espaco);
+    background: rgb(0 0 0 / 0.5);
+    z-index: 10;
+  }
+   
+  .caixa {
+    width: 100%;
+    max-width: 420px;
+    padding: 1.5rem;
+    background: var(--cor-superficie);
+    border-radius: var(--raio);
+  }
+   
+  .titulo {
+    margin-top: 0;
+    font-size: 1.3rem;
+  }
+   
+  .acoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
