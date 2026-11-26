@@ -7,7 +7,7 @@ import styles from "./Cabecalho.module.css";
 
 const LINKS = [
   { href: "/", texto: "Livros" },
-  { href: "/livros/novo", texto: "Novo Livros" },
+  { href: "/livros/novo", texto: "Novo Livro" },
 ];
 
 export default function Cabecalho() {

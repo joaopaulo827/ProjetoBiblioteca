@@ -17,7 +17,7 @@ export default function FiltroGeneros({ generos, selecionada, aoMudar }) {
           className={selecionada === generos.id ? styles.ativo : styles.opcao}
           onClick={() => aoMudar(generos.id)}
         >
-          {generos.nome}
+          {generos.genero}
         </button>
       ))}
     </div>
