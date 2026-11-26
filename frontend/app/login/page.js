@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Campo from "@/components/Campo/Campo";
 import Botao from "@/components/Botao/Botao";
 import Mensagem from "@/components/Mensagem/Mensagem";
+import { fazerLogin } from "@/lib/banco";
 import { entrar } from "@/lib/sessao";
 import styles from "./login.module.css";
 
@@ -13,17 +15,22 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
+  const [enviando, setEnviando] = useState(false);
 
-  const enviar = (event) => {
+  const enviar = async (event) => {
     event.preventDefault();
-    if (email.trim() === "" || senha === "") {
-      setErro("Preencha e-mail e senha.");
-      return;
+    setErro("");
+    setEnviando(true);
+    try {
+      const resposta = await fazerLogin({ email, senha });
+      entrar(resposta.token, resposta.nome);
+      router.replace("/");
+    } catch (e) {
+      setErro(e.message);
+      setEnviando(false);
     }
-    entrar("token-de-teste", email.split("@")[0]);
-    router.replace("/");
   };
-
+ 
   return (
     <form className={styles.login} onSubmit={enviar} noValidate>
       <h1>Entrar</h1>
@@ -42,7 +49,12 @@ export default function Login() {
         value={senha}
         onChange={(e) => setSenha(e.target.value)}
       />
-      <Botao type="submit">Entrar</Botao>
+      <Botao type="submit" disabled={enviando}>
+        {enviando ? "Entrando..." : "Entrar"}
+      </Botao>
+      <p>
+        Não tem conta? <Link href="/cadastro">Cadastre-se</Link>
+      </p>
     </form>
   );
 }

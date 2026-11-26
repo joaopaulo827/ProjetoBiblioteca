@@ -77,6 +77,14 @@ export default function FormLivro({ generos, LivroInicial = VAZIO, aoSalvar }) {
           value={dados.ano}
           onChange={mudar}
         />
+      <Campo
+        rotulo="Isbn (10 digitos)"
+        id="isbn"
+        name="isbn"
+        value={dados.isbn}
+        onChange={mudar}
+        erro={erros.isbn}
+      />        
       </div>
       <Campo
         rotulo="Genero"
