@@ -39,8 +39,8 @@ export default function DetalheLivro() {
       <h1>{livro.titulo}</h1>
       <p className={styles.info}>
         {livro.autor} Autor · {livro.ano} Ano
+        · {livro.isbn} Isbn
       </p>
-      <p>{livro.disponivel}</p>
  
       <div className={styles.acoes}>
         <Botao variante="secundario" type="button" onClick={() => router.back()}>
