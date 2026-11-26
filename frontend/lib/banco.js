@@ -4,6 +4,7 @@ import {
   } from "@/dados/exemplo";
   
   import { pegarToken } from "@/lib/sessao";
+  import { chamarApi } from "@/lib/api";
   
   const CHAVES = {
     generos: "banco-generos",
@@ -11,14 +12,8 @@ import {
     usuarios: "banco-usuarios",
   };
   
-  function esperar(ms = 300) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-  
-  function erro(status, mensagem) {
-    const e = new Error(mensagem);
-    e.status = status;
-    return e;
+  function esperar() {
+    return new Promise((resolve) => setTimeout(resolve, 300));
   }
   
   function ler(chave, inicial) {
@@ -29,11 +24,17 @@ import {
       return inicial;
     }
   }
-  
+   
   function gravar(chave, dados) {
     localStorage.setItem(chave, JSON.stringify(dados));
   }
 
+  function erro(status, mensagem) {
+    const e = new Error(mensagem);
+    e.status = status;
+    return e;
+  }
+   
   function usuarioLogado() {
     const token = pegarToken();
     const usuario = ler(CHAVES.usuarios, []).find((u) => u.token && u.token === token);
@@ -165,4 +166,15 @@ import {
       usuarios.map((u) => (u.id === usuario.id ? { ...u, token } : u)),
     );
     return { token, nome: usuario.nome };
-  }  
+  }
+  export const listarCategorias = () => chamarApi("/categorias");
+  export const criarCategoria = (dados) =>
+    chamarApi("/categorias", { method: "POST", body: dados });
+   
+  export const listarReceitas = () => chamarApi("/receitas");
+  export const buscarReceita = (id) => chamarApi(`/receitas/${id}`);
+  export const criarReceita = (dados) =>
+    chamarApi("/receitas", { method: "POST", body: dados });
+  export const atualizarReceita = (id, dados) =>
+    chamarApi(`/receitas/${id}`, { method: "PUT", body: dados });
+  export const excluirReceita = (id) => chamarApi(`/receitas/${id}`, { method: "DELETE" });
